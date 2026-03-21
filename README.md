@@ -1,37 +1,50 @@
-# 03 — JWT Auth Service
+# 03 - JWT Auth Service
 
-## 📖 Concept
-Microservices need stateless authentication — a service can't keep session state
-as it may have 10 instances. **JWT (JSON Web Tokens)** solve this:
-- User logs in → receives a signed token
-- Token is sent on every request
-- Any service can validate the token **without calling back** to Auth Service
+## Concept
 
-## 🚀 Run
+Microservices need stateless authentication because a service cannot keep session state when it may be running across 10 instances. JWT (JSON Web Tokens) solve this problem in a straightforward way.
+
+A user logs in and receives a signed token. That token is sent on every subsequent request. Any service can then validate the token on its own without needing to call back to the Auth Service.
+
+---
+
+## How to Run
+
 ```bash
 mvn spring-boot:run
 ```
 
-## 🧪 Test
+---
+
+## Testing
+
 ```bash
-# Login — get a token
+# Login and get a token
 curl -X POST http://localhost:8081/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"admin123"}'
 
-# Validate token
+# Validate a token
 curl http://localhost:8081/auth/validate \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
-## 👤 Demo Users
+---
+
+## Demo Users
+
 | Username | Password | Roles |
 |----------|----------|-------|
 | user | password | USER |
 | admin | admin123 | USER, ADMIN |
 
-## 🧠 Java 8 Features Used
-- **Functional Interface** (`Function<Claims, T>`) — generic claims extractor
-- **Optional** — null-safe Bearer token & claims extraction
-- **Stream + map()** — roles transformation to uppercase
-- **Method References** — `Claims::getSubject`, `String::toUpperCase`
+---
+
+## Java 8 Features Used
+
+| Feature | Where It Is Used |
+|---------|-----------------|
+| Functional Interface with Function | Generic claims extractor using Function<Claims, T> |
+| Optional | Null-safe extraction of Bearer token and claims |
+| Stream with map() | Transforming roles to uppercase |
+| Method References | Claims::getSubject and String::toUpperCase |
