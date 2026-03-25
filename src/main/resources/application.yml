@@ -6,8 +6,8 @@ spring:
     name: jwt-auth-service
 
 jwt:
-  secret: mySecretKey12345678901234567890123456789012  # Min 32 chars for HS256
-  expiration: 86400000  # 24 hours in ms
+  secret: mySecretKey12345678901234567890123456789012 
+  expiration: 86400000  
 
 eureka:
   client:
