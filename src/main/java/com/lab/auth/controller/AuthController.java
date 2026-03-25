@@ -10,14 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-/**
- * 🔐 Auth Controller
- *
- * POST /auth/login    → Issues JWT token
- * GET  /auth/validate → Validates JWT and returns claims
- *
- * Java 8 Feature: Optional chain for null-safe Bearer token extraction
- */
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
