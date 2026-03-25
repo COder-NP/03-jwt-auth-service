@@ -11,11 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-/**
- * 🛡️ Security Configuration
- * - Stateless session (JWT-based)
- * - In-memory users for demo (replace with DB in production)
- */
+
 @Configuration
 public class SecurityConfig {
 
